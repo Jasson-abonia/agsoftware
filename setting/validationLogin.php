@@ -23,7 +23,6 @@ if($_POST){
     }else{
         echo "<script> alert('Usuario o contraseña incorrecta')</script>";
     }
-
 }
 
 ?>

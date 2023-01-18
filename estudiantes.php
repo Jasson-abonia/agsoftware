@@ -1,6 +1,4 @@
 <?php include ('cabeceraAdmin.php'); ?>
-<?php include ('setting\conexion.php'); ?>
-
 <?php
 
 if($_GET){
@@ -17,7 +15,7 @@ $estudiantes=$objconexion->consultar("SELECT * FROM `usuarios`");
 ?>
 
 <br/>
-<h2 class="title-studen">Estudiantes.</h2>
+<h2 class="title studen">Estudiantes.</h2>
 <br/>
 <?php foreach($estudiantes as $estudiante){?>
     <?php if($estudiante['cuenta']=="Estudiante"){?>
@@ -42,16 +40,5 @@ $estudiantes=$objconexion->consultar("SELECT * FROM `usuarios`");
         <br/>
     <?php } ?>
 <?php } ?>
-
-<style>
-    h2.title-studen {
-    background: #8eaad3;
-    height: 60px;
-    margin: 60px auto 20px;
-    padding: 10px;
-    text-align: center;
-    font-weight: 900;
-    border-radius: 30px;
-}
 
 <?php include ('pie.php'); ?>

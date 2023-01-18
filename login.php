@@ -13,11 +13,13 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
 
+  <link rel="stylesheet" href="css\styles.css">
+
 </head>
 
 <body>
     <div class="container">
-        <div class="row justify-content-center align-items-center g-2">
+        <div class="row justify-content-center align-items-center g-2 conten-login">
             <div class="col-md-4">
             <br/>
                 <div class="card">
@@ -31,11 +33,9 @@
                             <button class="btn btn-success" type="submit">Iniciar sesion</button>
                         </form>
                     </div>
-                    <div class="card-footer text-muted">
-                        
-                    </div>
                 </div>
-                
+            </div>
+            <div class="col-md-2">
             </div>
             <div class="col-md-4">
                 <h2>Nuevo cuenta</h2>

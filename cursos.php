@@ -1,5 +1,4 @@
 <?php include ('cabeceraAdmin.php'); ?>
-<?php include ('setting\conexion.php'); ?>
 <?php
 
 if($_POST){
@@ -27,7 +26,7 @@ $cursos=$objconexion->consultar("SELECT * FROM `cursos`");
 
 ?>
 <br/>
-<h2 class="title-curso">Cursos.</h2>
+<h2 class="title curso">Cursos.</h2>
 <br/>
 <div class="container">
     <div class="row">
@@ -81,17 +80,5 @@ $cursos=$objconexion->consultar("SELECT * FROM `cursos`");
         
     </div>
 </div>
-
-<style>
-    h2.title-curso {
-    background: #ffd147;
-    height: 60px;
-    margin: 60px auto 20px;
-    padding: 10px;
-    text-align: center;
-    font-weight: 900;
-    border-radius: 30px;
-}
-</style>
 
 <?php include ('pie.php'); ?>

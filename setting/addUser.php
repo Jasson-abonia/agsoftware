@@ -14,13 +14,13 @@ if($_POST){
     $ciudad_municipio= $_POST['ciudad_municipio'];
     $direccion= $_POST['direccion'];
     $email= $_POST['email'];
-    $contrasenia= password_hash( $_POST['contrasenia'], PASSWORD_BCRYPT);
-    $fcontrasenia= password_hash( $_POST['fcontrasenia'], PASSWORD_BCRYPT);
+    $contrasenia1= password_hash( $_POST['contrasenia1'], PASSWORD_BCRYPT);
+    $contrasenia2= password_hash( $_POST['contrasenia2'], PASSWORD_BCRYPT);
 
     $objconexion = new conexion();
 
     $sqlUsuario="INSERT INTO `usuarios` (`id`, `cuenta`, `nombre`, `apellido`, `fecha_nacimiento`, `telefono`, `departamento`, `ciudad_municipio`, `diereccion`, `email`, `contrasenia`) 
-                 VALUES (NULL, '$cuenta', '$nombre', '$apellido', '$fecha_nacimiento', '$telefono', '$departamento', '$ciudad_municipio', '$direccion', '$email', '$fcontrasenia');";
+                 VALUES (NULL, '$cuenta', '$nombre', '$apellido', '$fecha_nacimiento', '$telefono', '$departamento', '$ciudad_municipio', '$direccion', '$email', '$contrasenia2');";
    
     $objconexion->ejecutar($sqlUsuario);
 
