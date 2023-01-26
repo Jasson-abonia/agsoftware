@@ -1,17 +1,38 @@
-<?php include ('cabecera.php'); ?>
-
 <?php 
+include ('Headboard.php');
+include_once('setting\Cursos.php');
+include_once('setting\Student.php');
 
-$curso_visto="";
+$cursos = new Cursos();
+$validationSessionStart = new Student();
+$validationSessionStart->setSessionStart($_SESSION['usuario']);
 
-if($_POST){
-
-    $curso_visto= (isset($_POST['curso_visto'])=="si")?"checked":"";
-
+if(isset($_POST['curso_visto']) && is_array($_POST['curso_visto'])){
+    $validationSessionStart->deleteAll();
+     
+    foreach($_POST['curso_visto'] as $curso){
+        $cursosVistos[$curso]  = true;
+        $idCursosVistos = [];
+        $validationSessionStart->addCurso($curso); 
+    }
+    $namberCursosVistos = sizeof($_POST['curso_visto']);
+}else{    
+    $validationSessionStart->deleteAll();
+    $namberCursosVistos = sizeof($validationSessionStart->getCursos());
 }
 
-$objconexion = new conexion();
-$cursos=$objconexion->consultar("SELECT * FROM `cursos`");
+$cursos = $cursos->allCursos();
+$cursosVistos = [];
+$totalCurso = sizeof($cursos);
+$idCurso = [];
+
+foreach($validationSessionStart->getCursos() as $curso){
+    $cursosVistos[$curso['id_curso']]  = true;
+}
+
+foreach($cursos as $curso){
+    array_push($idCurso, $curso["id"]);
+}
 
 ?>
 
@@ -19,8 +40,8 @@ $cursos=$objconexion->consultar("SELECT * FROM `cursos`");
 <div class="row align-items-md-stretch">
     <div class="col-md-8">
         <div class="h-100 p-5 text-white bg-primary border rounded-3">
-            <h2>Bienvenidos</h2>
-            <strong><?php echo $nombre." ".$apellido; ?></strong>
+            <h2>Bienvenido</h2>
+            <strong><?= $validationSessionStart->getFullName() ?></strong>
             <button class="btn btn-outline-primary" type="button">Mas informacion</button>
         </div>
     </div>
@@ -29,7 +50,7 @@ $cursos=$objconexion->consultar("SELECT * FROM `cursos`");
             <h5>Porcentaje actual de cursos vistos</h5>
             <h2>
                 <strong>
-                    80%
+                <?php echo $namberCursosVistos / $totalCurso * 100 ."%" ?>
                 </strong>
             </h2> 
         </div>
@@ -50,7 +71,7 @@ $cursos=$objconexion->consultar("SELECT * FROM `cursos`");
                                 <a href="<?php echo $curso['enlace']; ?>" target="_blank">Ver curso</a>
                             </strong>
                             <br/>
-                            <strong class="curso-visto">Curso visto<input type="checkbox" <?php echo $curso_visto;?> name="curso_visto" value="si"></strong>
+                            <strong class="curso-visto">Curso visto<input type="checkbox" <?php echo isset($cursosVistos[$curso['id']])?'checked':" ";?> name="curso_visto[]" value="<?=$curso['id']?>"></strong>
                         </div>
                 </div>
             </div>
@@ -60,4 +81,4 @@ $cursos=$objconexion->consultar("SELECT * FROM `cursos`");
     </form>
 </div>
 
-<?php include ('pie.php'); ?>
+<?php include ('Footer.php'); ?>

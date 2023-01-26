@@ -1,28 +1,22 @@
-<?php include ('cabeceraAdmin.php'); ?>
-<?php
+<?php 
+include ('Administratorheader.php'); 
+include_once('setting\Cursos.php');
+
+$curso = new Cursos();
 
 if($_POST){
-    print_r($_POST);
-    $nombre= $_POST['nombre'];
-    $enlace= $_POST['enlace'];
-    $descripcion= $_POST['descripcion'];
-
-    $objconexion = new conexion();
-    $sql="INSERT INTO `cursos` (`id`, `nombre`, `enlace`, `descripcion`) VALUES (NULL, '$nombre', '$enlace', '$descripcion');";
-    $objconexion->ejecutar($sql);
-    header("location:cursos.php");
+    $curso->setName($_POST['nombre']);
+    $curso->setLink($_POST['enlace']);
+    $curso->setDescription($_POST['descripcion']);
+    $curso->addCurso();
 }
 
 if($_GET){
-    $id=$_GET['borrar'];
-    $objconexion = new conexion();
-    $sql="DELETE FROM `cursos` WHERE `cursos`.`id` = ".$id;
-    $objconexion->ejecutar($sql);
-    header("location:cursos.php");
+    $curso->setIdDelete($_GET['borrar']);
+    $curso->deleteCurso();
 }
 
-$objconexion = new conexion();
-$cursos=$objconexion->consultar("SELECT * FROM `cursos`");
+$cursos = $curso->allCursos();
 
 ?>
 <br/>
@@ -81,4 +75,4 @@ $cursos=$objconexion->consultar("SELECT * FROM `cursos`");
     </div>
 </div>
 
-<?php include ('pie.php'); ?>
+<?php include ('Footer.php'); ?>

@@ -1,4 +1,4 @@
-<?php include ('setting\validationLogin.php'); ?>
+<?php include ('setting\ValidationLogin.php'); ?>
 
 <!doctype html>
 <html lang="en">
@@ -29,7 +29,7 @@
                     <div class="card-body">
                         <form action="login.php" method="post">
                             Usuario: <input class="form-control" type="email" name="email_usuario"><br/>
-                            Contraseña: <input class="form-control" type="password" name="contrasenia"><br/>
+                            Contraseña: <input class="form-control" type="password" name="password"><br/>
                             <button class="btn btn-success" type="submit">Iniciar sesion</button>
                         </form>
                     </div>
@@ -40,7 +40,7 @@
             <div class="col-md-4">
                 <h2>Nuevo cuenta</h2>
                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nam explicabo dolor officia, odit sapiente incidunt. Corporis, laborum natus nemo</p>
-                <a class="btn btn-success" href="createUser.php">Crear cuenta</a>
+                <a class="btn btn-success" href="CreateUser.php">Crear cuenta</a>
             </div>
         </div>
     </div>

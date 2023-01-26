@@ -1,16 +1,16 @@
 <?php
 
-class conexion{
+class Connection{
 
     private $servidor = "localhost";
     private $usuario = "root";
     private $contrasenia = "";
-    private $conexion;
+    private $Connection;
 
     public function __construct(){
         try{
-            $this->conexion = new PDO("mysql:host=$this->servidor; dbname=agsoftware", $this->usuario, $this->contrasenia );
-            $this->conexion->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+            $this->Connection = new PDO("mysql:host=$this->servidor; dbname=agsoftware", $this->usuario, $this->contrasenia );
+            $this->Connection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         }catch(PDOException $e){
            return "falla de conexion".$e;
         }
@@ -18,20 +18,20 @@ class conexion{
 
     public function ejecutar($sql){ //insertar/delete/actualizar
 
-        $this->conexion->exec($sql);
-        return $this->conexion->lastInsertId();
+        $this->Connection->exec($sql);
+        return $this->Connection->lastInsertId();
     }
 
     public function consultar($sql){
 
-        $sentencia=$this->conexion->prepare($sql);
+        $sentencia=$this->Connection->prepare($sql);
         $sentencia->execute();
         return $sentencia->fetchAll();
     }
 
     public function consultarUsuario($sql){
 
-        $sentencia=$this->conexion->prepare($sql);
+        $sentencia=$this->Connection->prepare($sql);
         $sentencia->execute();
         return $sentencia->fetch(PDO::FETCH_ASSOC);
     }

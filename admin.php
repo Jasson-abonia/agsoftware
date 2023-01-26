@@ -1,4 +1,4 @@
-<?php include ('cabeceraAdmin.php'); ?>
+<?php include ('Administratorheader.php'); ?>
 
 <br/>
 <br/>
@@ -7,8 +7,8 @@
     <div class="col-md-12">
         <div class="h-100 p-5 text-white bg-primary border rounded-3">
             <h2>Bienvenido al panel de administrasion de AgSoftware</h2>
-            <strong><?php echo $nombre." ".$apellido; ?></strong>
+            <strong><?= $validationSessionStart->getFullName(); ?></strong>
         </div>
     </div>
 </div>
-<?php include ('pie.php'); ?>
+<?php include ('Footer.php'); ?>
