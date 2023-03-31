@@ -17,7 +17,7 @@ if(isset($_POST['curso_visto']) && is_array($_POST['curso_visto'])){
     }
     $namberCursosVistos = sizeof($_POST['curso_visto']);
 }else{    
-    $validationSessionStart->deleteAll();
+    // $validationSessionStart->deleteAll();
     $namberCursosVistos = sizeof($validationSessionStart->getCursos());
 }
 
